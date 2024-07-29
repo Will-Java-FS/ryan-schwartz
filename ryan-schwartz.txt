@@ -1,0 +1,3 @@
+-I like to draw
+-I studied Machine learning in college
+-I'm working on a fighting game in my own spare time
