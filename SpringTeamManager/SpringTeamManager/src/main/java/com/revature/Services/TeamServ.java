@@ -1,4 +1,4 @@
-package com.revature.Servs;
+package com.revature.Services;
 
 import com.revature.Model.Team;
 

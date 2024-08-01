@@ -1,6 +1,4 @@
-package com.revature.Servs;
-import com.revature.Model.*;
-import com.revature.Repos.*;
+package com.revature.Services;
 import com.revature.Model.Team;
 import com.revature.Repos.TeamsRepo;
 import jakarta.transaction.Transactional;
