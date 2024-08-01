@@ -11,6 +11,7 @@ import java.util.Objects;
 @Table(name = "teams")
 
 public class Team {
+    @Getter
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "team_id", updatable = false)
