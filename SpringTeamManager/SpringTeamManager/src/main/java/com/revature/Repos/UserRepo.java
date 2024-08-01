@@ -17,7 +17,7 @@ public interface UserRepo extends CrudRepository<User, Integer> {
     @Query(value = "SELECT * from users where username = ?1 And pass = ?2", nativeQuery = true)
     User findByLogin(String name, String pass);
 
-    @Query(value = "Select * from users where users.my_team_id = (Select team_id from teams where team_name = 'MF Gators')"
+    @Query(value = "Select * from users where users.my_team_id = (Select team_id from teams where team_name = ?1)"
             , nativeQuery = true)
     List<User> findByTeamName(String name);
 }
