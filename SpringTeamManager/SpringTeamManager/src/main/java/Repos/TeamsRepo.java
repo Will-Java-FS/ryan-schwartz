@@ -11,6 +11,6 @@ import java.util.List;
 public interface TeamsRepo extends CrudRepository<Team, Integer> {
 
     @Query(value = "SELECT * from teams where team_name = ?1 Order by team_id", nativeQuery = true)
-    List<Team> findByName(String name);
+    Team findByName(String name);
 
 }
