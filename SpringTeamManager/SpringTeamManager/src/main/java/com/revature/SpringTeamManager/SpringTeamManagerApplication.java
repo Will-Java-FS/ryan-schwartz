@@ -2,8 +2,11 @@ package com.revature.SpringTeamManager;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-
-@SpringBootApplication
+import org.springframework.boot.autoconfigure.domain.EntityScan;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+@SpringBootApplication(scanBasePackages = "com.revature")
+@EntityScan("com.revature.Model")
+@EnableJpaRepositories("com.revature.Repos")
 public class SpringTeamManagerApplication {
 
 	public static void main(String[] args) {

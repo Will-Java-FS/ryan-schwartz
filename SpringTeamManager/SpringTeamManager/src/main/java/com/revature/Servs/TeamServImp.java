@@ -1,15 +1,14 @@
-package Servs;
-import Model.*;
-import Repos.*;
+package com.revature.Servs;
+import com.revature.Model.*;
+import com.revature.Repos.*;
+import com.revature.Model.Team;
+import com.revature.Repos.TeamsRepo;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 
 @Service

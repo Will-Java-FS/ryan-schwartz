@@ -1,6 +1,6 @@
-package Repos;
+package com.revature.Repos;
 
-import Model.User;
+import com.revature.Model.User;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;

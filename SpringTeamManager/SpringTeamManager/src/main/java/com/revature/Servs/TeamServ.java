@@ -1,7 +1,6 @@
-package Servs;
+package com.revature.Servs;
 
-import Model.User;
-import Model.Team;
+import com.revature.Model.Team;
 
 import java.util.List;
 
