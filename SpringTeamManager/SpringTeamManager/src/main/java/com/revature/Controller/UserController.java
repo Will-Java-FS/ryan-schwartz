@@ -30,7 +30,7 @@ public class UserController {
     }
 
     @PostMapping(value = "/user/signup", consumes = "application/json", produces ="application/json")
-    public ResponseEntity<Object> addActor(@RequestBody User user) {
+    public ResponseEntity<Object> addUser(@RequestBody User user) {
         Map<String, String> errorMessage = new HashMap<String, String>();
         Optional<User> isUserInDB = Optional.ofNullable(userRepository.findByUsername(user.getUsername()));
 
@@ -55,7 +55,25 @@ public class UserController {
         }
     }
 
+    @PostMapping(value = "/user/login", consumes = "application/json", produces ="application/json")
+    public ResponseEntity<Object> userLogin(@RequestBody User user) {
+        Map<String, String> errorMessage = new HashMap<String, String>();
+        Optional<User> isUserInDB = Optional.ofNullable(userRepository.findByUsernameAndPass(user.getUsername(), user.getPass()));
 
+        if (user.getUsername().isEmpty()) { // username is empty
+            errorMessage.put("Error", "Username is empty!");
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorMessage);
+        } else if (user.getPass().isEmpty()) { // password is empty
+            errorMessage.put("Error", "Password is empty!");
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorMessage);
+        }  else if (isUserInDB.isEmpty()) {
+            errorMessage.put("Error", "User credentials are invalid!");
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorMessage);
+        } else {
+            User userLoggedIn = userService.userLogin(user);
+            return ResponseEntity.status(HttpStatus.OK).header("content-type", "application/json").body(userLoggedIn);
+        }
+    }
 }
 
 
