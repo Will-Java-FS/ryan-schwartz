@@ -37,13 +37,13 @@ public class UserController {
         if (user.getUsername().isEmpty()) { // username is empty
             errorMessage.put("Error", "Username is empty!");
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorMessage);
-        } else if (user.getPass().isEmpty()) { // password is empty
+        } else if (user.getPassword().isEmpty()) { // password is empty
             errorMessage.put("Error", "Password is empty!");
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorMessage);
         } else if (user.getUsername().length() < 4) { // username is less than 4 characters
             errorMessage.put("Error", "Username cannot be less than 4 characters long!");
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorMessage);
-        } else if (user.getPass().length() < 4) { // password is less than 4 characters
+        } else if (user.getPassword().length() < 4) { // password is less than 4 characters
             errorMessage.put("Error", "Password cannot be less than 4 characters long!");
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorMessage);
         } else if (isUserInDB.isPresent()) {
@@ -58,12 +58,12 @@ public class UserController {
     @PostMapping(value = "/user/login", consumes = "application/json", produces ="application/json")
     public ResponseEntity<Object> userLogin(@RequestBody User user) {
         Map<String, String> errorMessage = new HashMap<String, String>();
-        Optional<User> isUserInDB = Optional.ofNullable(userRepository.findByUsernameAndPass(user.getUsername(), user.getPass()));
+        Optional<User> isUserInDB = Optional.ofNullable(userRepository.findByUsernameAndPassword(user.getUsername(), user.getPassword()));
 
         if (user.getUsername().isEmpty()) { // username is empty
             errorMessage.put("Error", "Username is empty!");
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorMessage);
-        } else if (user.getPass().isEmpty()) { // password is empty
+        } else if (user.getPassword().isEmpty()) { // password is empty
             errorMessage.put("Error", "Password is empty!");
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorMessage);
         }  else if (isUserInDB.isEmpty()) {

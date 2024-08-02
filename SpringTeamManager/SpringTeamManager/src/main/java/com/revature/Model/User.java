@@ -10,9 +10,10 @@ import java.util.Objects;
 @Table(name = "users")
 public class User {
     public User() {}
+
     public User(String username, String password) {
         this.username = username;
-        this.pass = password;
+        this.password = password;
     }
 
     @Id
@@ -28,27 +29,14 @@ public class User {
 
     @Setter
     @Getter
-    @Column(name = "pass")
-    private String pass;
-
-    @Getter
-    @Setter
-    @OneToOne
-    @JoinColumn(name = "my_team_id", referencedColumnName = "team_id")
-    private Team my_team;
-
-    public User(String username, String pass, Team my_team) {
-        this.username = username;
-        this.pass = pass;
-        this.my_team = my_team;
-    }
+    @Column(name = "password", nullable = false)
+    private String password;
 
     @Override
     public String toString() {
         return "User{" +
                 ", username='" + username + '\'' +
-                ", pass='" + pass + '\'' +
-                ", my_team=" + my_team +
+                ", password='" + password +
                 '}';
     }
 
@@ -57,11 +45,11 @@ public class User {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return user_id == user.user_id && Objects.equals(getUsername(), user.getUsername()) && Objects.equals(getPass(), user.getPass()) && Objects.equals(getMy_team(), user.getMy_team());
+        return user_id == user.user_id && Objects.equals(getUsername(), user.getUsername()) && Objects.equals(getPassword(), user.getPassword());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(user_id, getUsername(), getPass(), getMy_team());
+        return Objects.hash(user_id, getUsername(), getPassword());
     }
 }
