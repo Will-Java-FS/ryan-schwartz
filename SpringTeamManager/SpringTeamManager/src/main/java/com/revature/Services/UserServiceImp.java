@@ -18,10 +18,7 @@ public class UserServiceImp implements UserService {
     }
 
     public User createUserAccount(User user) { return userRepository.save(user); }
-
-    public User userLogin(User u) {
-        return null;
-    }
+    public User userLogin(User user) { return userRepository.findByUsernameAndPass(user.getUsername(), user.getPass()); }
 
     public List<Team> getItemsAssociatedWithUser(User u) {
         return null;

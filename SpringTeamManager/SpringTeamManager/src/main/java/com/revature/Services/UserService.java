@@ -6,8 +6,8 @@ import java.util.List;
 
 public interface UserService {
     // Trivial Services
-    public User createUserAccount(User u);
-    public User userLogin(User u);
+    public User createUserAccount(User user);
+    public User userLogin(User user);
     public List<Team> getItemsAssociatedWithUser(User u);
 }
 
