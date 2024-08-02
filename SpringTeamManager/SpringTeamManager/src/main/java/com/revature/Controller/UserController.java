@@ -49,10 +49,9 @@ public class UserController {
         } else if (isUserInDB.isPresent()) {
             errorMessage.put("Error", "Username already exists in the database!");
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorMessage);
-        }
-        else {
+        } else {
             User createdUserAccount = userService.createUserAccount(user);
-            return ResponseEntity.status(200).header("content-type", "application/json").body(createdUserAccount);
+            return ResponseEntity.status(HttpStatus.OK).header("content-type", "application/json").body(createdUserAccount);
         }
     }
 

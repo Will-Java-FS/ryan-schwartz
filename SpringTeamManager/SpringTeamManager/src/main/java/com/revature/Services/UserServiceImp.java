@@ -19,7 +19,6 @@ public class UserServiceImp implements UserService {
 
     public User createUserAccount(User user) { return userRepository.save(user); }
 
-
     public User userLogin(User u) {
         return null;
     }
