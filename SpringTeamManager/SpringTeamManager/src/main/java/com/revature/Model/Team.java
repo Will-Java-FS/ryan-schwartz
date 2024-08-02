@@ -11,8 +11,15 @@ import java.util.Objects;
 
 public class Team {
     public Team() {}
+
     public Team(String team_name) {
         this.team_name = team_name;
+    }
+
+    public Team(String team_name, int wins, int loses) {
+        this.team_name = team_name;
+        this.wins = wins;
+        this.loses = loses;
     }
     
     @Getter
@@ -35,12 +42,6 @@ public class Team {
     @Getter
     @Column(name = "loses", columnDefinition = "int CHECK (loses >= 0)")
     private int loses;
-
-    public Team(String team_name, int wins, int loses) {
-        this.team_name = team_name;
-        this.wins = wins;
-        this.loses = loses;
-    }
 
     @Override
     public String toString() {
