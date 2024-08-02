@@ -9,6 +9,12 @@ import java.util.Objects;
 @Entity
 @Table(name = "users")
 public class User {
+    public User() {}
+    public User(String username, String password) {
+        this.username = username;
+        this.pass = password;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "user_id", updatable = false)

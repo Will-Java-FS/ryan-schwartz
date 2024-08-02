@@ -10,6 +10,11 @@ import java.util.Objects;
 @Table(name = "teams")
 
 public class Team {
+    public Team() {}
+    public Team(String team_name) {
+        this.team_name = team_name;
+    }
+    
     @Getter
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
