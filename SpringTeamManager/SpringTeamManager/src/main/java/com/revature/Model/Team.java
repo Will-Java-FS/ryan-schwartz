@@ -10,7 +10,9 @@ import java.util.Objects;
 @Table(name = "teams")
 
 public class Team {
+
     public Team() {} // Possibly unnecessary code?
+
     public Team(String team_name) {
         this.team_name = team_name;
         this.wins = 0;
@@ -26,6 +28,12 @@ public class Team {
 
     public Team(int id, String team_name, int wins, int loses) {
         this.id = id;
+        this.team_name = team_name;
+        this.wins = wins;
+        this.loses = loses;
+    }
+    public Team(String team_name, int wins, int loses) {
+
         this.team_name = team_name;
         this.wins = wins;
         this.loses = loses;
@@ -51,12 +59,6 @@ public class Team {
     @Getter
     @Column(name = "loses", columnDefinition = "int CHECK (loses >= 0)")
     private int loses;
-
-    public Team(String team_name, int wins, int loses) {
-        this.team_name = team_name;
-        this.wins = wins;
-        this.loses = loses;
-    }
 
     @Override
     public String toString() {
