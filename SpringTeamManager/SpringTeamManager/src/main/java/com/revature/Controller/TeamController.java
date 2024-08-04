@@ -1,6 +1,7 @@
 package com.revature.Controller;
 
 import com.revature.Model.Team;
+import com.revature.Model.User;
 import com.revature.Services.TeamServ;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -57,4 +58,37 @@ public class TeamController {
         }
     }
 
+    @PostMapping(value = "/add", consumes = "application/json", produces ="application/json")
+    public ResponseEntity<Object> addTeam(@RequestBody Team team)
+    {
+        Map<String, String> message = new HashMap<String, String>();
+        Team success = ts.addTeam(team);
+        if(success == null)
+        {
+            message.put("Error", "Team was not added");
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(message);
+        } else
+        {
+            message.put("Message", "Team updated");
+            return ResponseEntity.status(200).header("content-type", "application/json").body(message);
+        }
+
+    }
+
+    @PatchMapping(value = "/update", consumes = "application/json", produces ="application/json")
+    public ResponseEntity<Object> updateTeam(@RequestBody Team team)
+    {
+        Map<String, String> message = new HashMap<String, String>();
+        Team success = ts.updateTeam(team);
+        if(success == null)
+        {
+            message.put("Error", "Team at " + team.getId() + "  was not updated. Team may not have been added.");
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(message);
+        } else
+        {
+            message.put("Message", "Team at " + team.getId() + " updated");
+            return ResponseEntity.status(200).header("content-type", "application/json").body(message);
+        }
+
+    }
 }

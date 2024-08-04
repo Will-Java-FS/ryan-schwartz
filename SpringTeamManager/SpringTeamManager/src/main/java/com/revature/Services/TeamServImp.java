@@ -32,7 +32,12 @@ public class TeamServImp implements TeamServ {
     }
     public Team updateTeam(Team change)
     {
-        return tr.save(change);
+        if(getTeam(change.getId()) == null) {
+            return null;
+        } else
+        {
+            return tr.save(change);
+        }
     }
     public boolean deleteTeam(int id)
     {
