@@ -10,11 +10,27 @@ import java.util.Objects;
 @Table(name = "teams")
 
 public class Team {
-    public Team() {}
+    public Team() {} // Possibly unnecessary code?
     public Team(String team_name) {
         this.team_name = team_name;
+        this.wins = 0;
+        this.loses = 0;
     }
-    
+
+    public Team(int id, String team_name) {
+        this.id = id;
+        this.team_name = team_name;
+        this.wins = 0;
+        this.loses = 0;
+    }
+
+    public Team(int id, String team_name, int wins, int loses) {
+        this.id = id;
+        this.team_name = team_name;
+        this.wins = wins;
+        this.loses = loses;
+    }
+
     @Getter
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
