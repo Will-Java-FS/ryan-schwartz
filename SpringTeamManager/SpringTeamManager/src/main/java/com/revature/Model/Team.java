@@ -31,8 +31,8 @@ public class Team {
         this.wins = wins;
         this.loses = loses;
     }
-    public Team(String team_name, int wins, int loses) {
 
+    public Team(String team_name, int wins, int loses) {
         this.team_name = team_name;
         this.wins = wins;
         this.loses = loses;
