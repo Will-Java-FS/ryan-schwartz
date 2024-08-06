@@ -85,9 +85,9 @@ public class TeamController {
     {
         Map<String, String> message = new HashMap<String, String>();
         Team success = ts.updateTeam(team);
-        if(success == null)
+        if (success == null)
         {
-            message.put("Error", "Team at " + team.getId() + "  was not updated. Team may not have been added.");
+            message.put("Error", "Team at " + team.getId() + " was not updated. Team may not have been added.");
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(message);
         } else
         {
