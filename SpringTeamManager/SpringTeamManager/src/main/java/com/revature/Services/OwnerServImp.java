@@ -20,6 +20,11 @@ public class OwnerServImp implements OwnerService{
         return or.save(own);
     }
 
+    public Owner getByIds(int uid, int tid)
+    {
+        return or.findAllByIds(uid, tid).size() > 0 ? or.findAllByIds(uid, tid).get(0) : null;
+    }
+
     @Override
     public boolean deleteConnection(int id) {
         try {

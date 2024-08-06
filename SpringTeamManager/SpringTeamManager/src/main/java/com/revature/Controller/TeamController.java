@@ -46,6 +46,11 @@ public class TeamController {
     @DeleteMapping("/{teamId}")
     public ResponseEntity<Object> deleteTeam(@PathVariable int teamId) {
         Map<String, String> message = new HashMap<String, String>();
+        if(ts.getTeam(teamId) == null)
+        {
+            message.put("Error", "Team at " + teamId + " doesn't exist");
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(message);
+        }
         if( ts.deleteTeam(teamId))
         {
             message.put("Message", "Team at " + teamId + " deleted successfully");

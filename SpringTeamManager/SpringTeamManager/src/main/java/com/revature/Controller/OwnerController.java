@@ -60,7 +60,11 @@ public class OwnerController {
     @DeleteMapping("/delete/{userId}/{teamId}")
     public ResponseEntity<Object> deleteTeam(@PathVariable int userId, @PathVariable int teamId) {
         Map<String, String> message = new HashMap<String, String>();
-
+        if(os.getByIds(userId, teamId) == null)
+        {
+            message.put("Error", "Owner Connection doesn't exist");
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(message);
+        }
         if( os.deleteByUserTeamId(userId,teamId))
         {
             message.put("Message", "Connection deleted successfully");
