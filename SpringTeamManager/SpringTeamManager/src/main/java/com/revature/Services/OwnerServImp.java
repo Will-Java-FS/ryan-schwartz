@@ -29,13 +29,6 @@ public class OwnerServImp implements OwnerService{
         return test.isPresent() ? test.get() : null;
     }
 
-
-    @Override
-    public Owner getByIds(int uid, int tid)
-    {
-        return or.findAllByIds(uid, tid).size() > 0 ? or.findAllByIds(uid, tid).get(0) : null;
-    }
-
     @Override
     public boolean deleteConnection(int id) {
         try {
@@ -49,10 +42,10 @@ public class OwnerServImp implements OwnerService{
 
     @Override
     public boolean deleteByUserTeamId(int uid, int tid) {
-        List<Owner> result = or.findAllByIds(uid, tid);
+        Owner result = or.findAllByIds(uid, tid);
         try {
-        or.deleteAllInBatch(result);
-        return true;
+            or.delete(result);
+            return true;
         } catch (Exception e) {
             e.printStackTrace();
             return false;
