@@ -24,12 +24,10 @@ public class Owner {
 
     @Setter
     @Getter
-    @Column(name = "user_id", nullable = false)
     private int user_id;
 
     @Setter
     @Getter
-    @Column(name = "team_id", nullable = false)
     private int team_id;
 
     @Override

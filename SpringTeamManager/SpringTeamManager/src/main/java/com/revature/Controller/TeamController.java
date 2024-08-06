@@ -69,7 +69,7 @@ public class TeamController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(message);
         } else
         {
-            message.put("Message", "Team updated");
+            message.put("Message", "Team added");
             return ResponseEntity.status(200).header("content-type", "application/json").body(message);
         }
 
