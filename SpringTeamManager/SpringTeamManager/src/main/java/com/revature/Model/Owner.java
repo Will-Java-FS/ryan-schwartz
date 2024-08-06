@@ -2,15 +2,15 @@ package com.revature.Model;
 
 import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.Objects;
 
 @Entity
 @Table(name = "owners")
+@NoArgsConstructor
 public class Owner {
-    public Owner() {}
-
     public Owner(int user_id, int team_id) {
         this.user_id = user_id;
         this.team_id = team_id;

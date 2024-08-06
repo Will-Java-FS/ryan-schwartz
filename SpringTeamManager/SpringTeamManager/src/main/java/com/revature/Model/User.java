@@ -1,16 +1,17 @@
 package com.revature.Model;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.Objects;
 
 @Entity
 @Table(name = "users")
+@NoArgsConstructor
 public class User {
-    public User() {}
-
     public User(String username, String password) {
         this.username = username;
         this.password = password;

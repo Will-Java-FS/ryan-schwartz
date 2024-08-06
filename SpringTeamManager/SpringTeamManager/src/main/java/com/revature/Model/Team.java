@@ -1,18 +1,17 @@
 package com.revature.Model;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.Objects;
 
 @Entity
 @Table(name = "teams")
-
+@NoArgsConstructor
 public class Team {
-
-    public Team() {} // Possibly unnecessary code?
-
     public Team(String team_name) {
         this.team_name = team_name;
         this.wins = 0;
