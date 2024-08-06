@@ -12,5 +12,5 @@ public interface OwnerRepository extends JpaRepository<Owner, Integer> {
     List<Owner> findAllByUserId(int userId);
 
     @Query(value = "SELECT * FROM owners WHERE user_id = ?1 AND team_id = ?2", nativeQuery = true)
-    List<Owner> findAllByIds(int userId,int teamId);
+    Owner findAllByIds(int userId,int teamId);
 }
