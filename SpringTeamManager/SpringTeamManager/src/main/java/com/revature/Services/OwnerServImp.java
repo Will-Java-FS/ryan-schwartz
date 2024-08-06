@@ -20,6 +20,14 @@ public class OwnerServImp implements OwnerService{
         return or.save(own);
     }
 
+    @Override
+    public Owner getById(int id)
+    {
+        Optional<Owner> test = or.findById(id);
+        return test.isPresent() ? test.get() : null;
+    }
+
+    @Override
     public Owner getByIds(int uid, int tid)
     {
         return or.findAllByIds(uid, tid).size() > 0 ? or.findAllByIds(uid, tid).get(0) : null;

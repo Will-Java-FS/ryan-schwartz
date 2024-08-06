@@ -2,8 +2,10 @@ package com.revature.Controller;
 import com.revature.Model.Owner;
 import com.revature.Model.Team;
 import com.revature.Model.User;
+import com.revature.Repos.UserRepository;
 import com.revature.Services.OwnerService;
 import com.revature.Services.TeamServ;
+import com.revature.Services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,16 +20,20 @@ import java.util.Map;
 @CrossOrigin
 public class OwnerController {
     OwnerService os;
-
+    TeamServ ts;
+    UserRepository ur;
     @Autowired
-    public OwnerController(OwnerService os) {
+    public OwnerController(OwnerService os, TeamServ ts, UserRepository ur) {
         this.os = os;
+        this.ts = ts;
+        this.ur = ur;
     }
 
     @PostMapping(value = "/add", consumes = "application/json", produces ="application/json")
     public ResponseEntity<Object> addTeam(@RequestBody Owner owner)
     {
         Map<String, String> message = new HashMap<String, String>();
+
         Owner success = os.addConnection(owner);
         if(success == null)
         {
@@ -44,7 +50,11 @@ public class OwnerController {
     @DeleteMapping("/delete/{ownerId}")
     public ResponseEntity<Object> deleteTeam(@PathVariable int ownerId) {
         Map<String, String> message = new HashMap<String, String>();
-
+        if(os.getById(ownerId) == null)
+        {
+            message.put("Error", "Owner Connection doesn't exist");
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(message);
+        }
         if( os.deleteConnection(ownerId))
         {
             message.put("Message", "Connection deleted successfully");

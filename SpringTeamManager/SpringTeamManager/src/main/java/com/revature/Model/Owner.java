@@ -22,6 +22,7 @@ public class Owner {
     @Getter
     private int owner_id;
 
+
     @Setter
     @Getter
     private int user_id;
