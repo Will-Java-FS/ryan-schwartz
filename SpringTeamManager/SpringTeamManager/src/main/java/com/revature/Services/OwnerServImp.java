@@ -5,6 +5,8 @@ import com.revature.Repos.OwnerRepository;
 import com.revature.Repos.TeamsRepo;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -26,6 +28,7 @@ public class OwnerServImp implements OwnerService{
         Optional<Owner> test = or.findById(id);
         return test.isPresent() ? test.get() : null;
     }
+
 
     @Override
     public Owner getByIds(int uid, int tid)

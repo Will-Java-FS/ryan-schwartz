@@ -20,13 +20,9 @@ import java.util.Map;
 @CrossOrigin
 public class OwnerController {
     OwnerService os;
-    TeamServ ts;
-    UserRepository ur;
     @Autowired
-    public OwnerController(OwnerService os, TeamServ ts, UserRepository ur) {
+    public OwnerController(OwnerService os) {
         this.os = os;
-        this.ts = ts;
-        this.ur = ur;
     }
 
     @PostMapping(value = "/add", consumes = "application/json", produces ="application/json")
