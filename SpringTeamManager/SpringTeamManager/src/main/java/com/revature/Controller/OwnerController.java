@@ -38,7 +38,7 @@ public class OwnerController {
         Map<String, String> message = new HashMap<String, String>();
         Optional<User> isUserInDB = Optional.ofNullable(ur.findByUserId(owner.getUser_id()));
         Optional<Team> isTeamInDB = Optional.ofNullable(tr.findByTeamId(owner.getTeam_id()));
-        Optional<Owner> userOwnsTeam = Optional.ofNullable(or.findAllByIds(owner.getUser_id(), owner.getTeam_id()));
+        Optional<Owner> userOwnsTeam = Optional.ofNullable(or.findByIds(owner.getUser_id(), owner.getTeam_id()));
 
         if (isUserInDB.isEmpty()) {
             message.put("Error", "User does not exist in the database (incorrect user id)!");
@@ -79,7 +79,7 @@ public class OwnerController {
     @DeleteMapping("/delete/{userId}/{teamId}")
     public ResponseEntity<Object> deleteTeam(@PathVariable int userId, @PathVariable int teamId) {
         Map<String, String> message = new HashMap<String, String>();
-        if (or.findAllByIds(userId, teamId) == null)
+        if (or.findByIds(userId, teamId) == null)
         {
             message.put("Error", "Owner Connection doesn't exist");
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(message);
