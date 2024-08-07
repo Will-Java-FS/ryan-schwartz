@@ -30,12 +30,13 @@ public class TeamServImp implements TeamServ {
     {
         return (List<Team>) tr.findAll();
     }
-    public Team updateTeam(Team change)
+    public Team updateTeam(Team change, int id)
     {
-        if(getTeam(change.getId()) == null) {
+        if(getTeam(id) == null) {
             return null;
         } else
         {
+            change.setId(id);
             return tr.save(change);
         }
     }

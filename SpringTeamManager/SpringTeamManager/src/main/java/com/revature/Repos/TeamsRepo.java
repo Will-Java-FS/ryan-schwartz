@@ -12,4 +12,6 @@ public interface TeamsRepo extends CrudRepository<Team, Integer> {
 
     @Query(value = "SELECT * from teams WHERE team_id = ?1", nativeQuery = true)
     Team findByTeamId(int teamId);
+
+
 }

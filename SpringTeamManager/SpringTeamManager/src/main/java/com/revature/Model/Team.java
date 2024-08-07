@@ -39,6 +39,7 @@ public class Team {
     }
 
     @Getter
+    @Setter
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "team_id", updatable = false)

@@ -96,10 +96,10 @@ public class TeamController {
 
     }
 
-    @PatchMapping(value = "/update", consumes = "application/json", produces ="application/json")
-    public ResponseEntity<Object> updateTeam(@RequestBody Team team) {
+    @PatchMapping(value = "/update/{team_id}", consumes = "application/json", produces ="application/json")
+    public ResponseEntity<Object> updateTeam(@RequestBody Team team, @PathVariable int team_id) {
         Map<String, String> message = new HashMap<String, String>();
-        Optional<Team> isTeamIdInDB = Optional.ofNullable(tr.findByTeamId(team.getId()));
+        Optional<Team> isTeamIdInDB = Optional.ofNullable(tr.findByTeamId(team_id));
         Optional<Team> isTeamNameTaken = Optional.ofNullable(tr.findByName(team.getTeam_name()));
 
         if (isTeamIdInDB.isEmpty()) {
@@ -109,7 +109,7 @@ public class TeamController {
             message.put("Error", "Team name is already being used. Must be unique!");
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(message);
         } else {
-            ts.updateTeam(team);
+            ts.updateTeam(team, team_id);
             message.put("Message", "Team was successfully updated!");
             return ResponseEntity.status(HttpStatus.OK).header("content-type", "application/json").body(message);
         }

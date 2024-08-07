@@ -10,7 +10,7 @@ public interface TeamServ {
     public Team addTeam(Team t);
     public Team getTeam(int id);
     public List<Team> getAllTeams();
-    public Team updateTeam(Team change);
+    public Team updateTeam(Team change, int id);
     public boolean deleteTeam(int id);
 
     //Can be other more interesting services
